@@ -1116,6 +1116,23 @@
                         </div>
                     </div>
                 </div>
+                  <!-- Player 8 -->
+                <div class="player-card">
+                    <div class="player-img">
+                        <img src="./Yousuf.jpeg" alt="Player 3">
+                    </div>
+                    <div class="player-info">
+                        <h3>YOUSUF</h3>
+                        <p class="player-weight">Weight Class: -90kg</p>
+                        <p>Rising star with multiple regional titles and exceptional technique.</p>
+                        <div class="challenge-btns">
+                            <a href="https://wa.me/923173916773?text=I%20want%20to%20challenge%20YOUSUF%20in%20-70kg%20category." class="btn btn-small">-70kg</a>
+                            <a href="https://wa.me/923173916773?text=I%20want%20to%20challenge%20YOUSUF%20in%20-80kg%20category." class="btn btn-small">-80kg</a>
+                            <a href="https://wa.me/923173916773?text=I%20want%20to%20challenge%20YOUSUF%20in%20-90kg%20category." class="btn btn-small">-90kg</a>
+                            <a href="https://wa.me/923173916773?text=I%20want%20to%20challenge%20YOUSUF%20in%20Open%20Weight%20category." class="btn btn-small">Open Weight</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1321,7 +1338,7 @@
                     <i class="fas fa-users"></i>
                     <h3>Challenge the Whole Team</h3>
                     <p>Challenge our entire team for a friendly competition or official match.</p>
-                    <a href="https://wa.me/923173916773?text=I%20want%20to%20challenge%20the%20whole%20Restighten%20team" class="btn">Challenge Team</a>
+                    <a href="https://wa.me/923173916773?text=I%20want%20to%20challenge%20the%20whole%20HYDERABAD%20WRIST%20TITANS%20TEAM" class="btn">Challenge Team</a>
                 </div>
             </div>
             
@@ -1732,17 +1749,22 @@
                 header.style.backgroundColor = 'var(--secondary)';
             }
         });
-        // Login Form Handling
+
+        // main.js script میں یہ کوڈ تبدیل کریں:
+
+// Login Form Handling
 document.getElementById('login-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
+    const storedEmail = localStorage.getItem('userEmail');
+    const storedPassword = localStorage.getItem('userPassword');
     
-    if (email && password) {
-        // Save user info
-        localStorage.setItem('userEmail', email);
-        localStorage.setItem('userName', email.split('@')[0]);
+    if (email === storedEmail && password === storedPassword) {
+        // Save login status
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userName', localStorage.getItem('userName') || email.split('@')[0]);
         
         alert('✅ Login successful! Going to dashboard...');
         
@@ -1754,7 +1776,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
             window.location.href = 'dashboard.html';
         }, 1000);
     } else {
-        alert('❌ Please enter email and password');
+        alert('❌ Invalid email or password! Please try again.');
     }
 });
 
@@ -1772,12 +1794,18 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
         return;
     }
     
+    if (password.length < 6) {
+        alert('❌ Password must be at least 6 characters long!');
+        return;
+    }
+    
     if (name && email && password) {
         // Save user data
         localStorage.setItem('userEmail', email);
         localStorage.setItem('userName', name);
+        localStorage.setItem('userPassword', password);
         
-        alert('✅ Registration successful! Please login now.');
+        alert('✅ Registration successful! Please login with your credentials.');
         
         // Switch to login tab
         document.querySelectorAll('.modal-tab').forEach(tab => tab.classList.remove('active'));
@@ -1791,7 +1819,6 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
         document.getElementById('login-password').value = '';
     }
 });
-
     </script>
     <script src="./frontend.js"></script>
     <script src="./server.js"></script>

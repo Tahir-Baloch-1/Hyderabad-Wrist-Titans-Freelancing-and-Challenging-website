@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Hyderabad Wrist Titans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #121212 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: #000;
+            padding: 20px;
+            border-bottom: 3px solid #FFD700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .welcome-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #FFD700;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #FFD700;
+            color: black;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #FFC400;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .logout-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Hyderabad Wrist Titans</div>
+        <div>
+            <a href="index.html" class="btn">🏠 Home</a>
+            <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="welcome-box">
+            <h1 id="welcome-message">Welcome to Your Dashboard</h1>
+            <p id="user-info">Loading your information...</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <h3>📊 My Stats</h3>
+                <p style="font-size: 2.5rem; color: #FFD700;" id="total-matches">0</p>
+                <p>Total Matches</p>
+            </div>
+            
+            <div class="stat-box">
+                <h3>🎯 Upcoming Events</h3>
+                <p style="font-size: 2.5rem; color: #FFD700;" id="upcoming-events">2</p>
+                <p>Events You Can Join</p>
+            </div>
+            
+            <div class="stat-box">
+                <h3>👥 Team Status</h3>
+                <p style="font-size: 2.5rem; color: #FFD700;">Member</p>
+                <p>Active Member</p>
+            </div>
+            
+            <div class="stat-box">
+                <h3>⚡ Quick Actions</h3>
+                <a href="index.html#challenge" class="btn" style="padding: 8px 15px; font-size: 14px;">Challenge Player</a>
+                <a href="index.html#contact" class="btn" style="padding: 8px 15px; font-size: 14px;">Contact Admin</a>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="info-card">
+                <h3>📅 Upcoming Tournaments</h3>
+                <ul style="margin: 15px 0 0 20px;">
+                    <li>🏆 Winter Championship - Dec 25, 2023</li>
+                    <li>🥇 Hyderabad Open - Jan 15, 2024</li>
+                    <li>🎯 Monthly Challenge - Every Sunday</li>
+                </ul>
+                <a href="index.html#store" class="btn" style="margin-top: 15px;">Register Now</a>
+            </div>
+            
+            <div class="info-card">
+                <h3>📢 Announcements</h3>
+                <ul style="margin: 15px 0 0 20px;">
+                    <li>✅ New training sessions starting next week</li>
+                    <li>🎁 Special discount for members on equipment</li>
+                    <li>👥 Team meeting every Friday 5 PM</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>📞 Contact Information</h3>
+                <p style="margin: 10px 0;"><strong>Coach:</strong> +92 317 3916773</p>
+                <p style="margin: 10px 0;"><strong>Training Time:</strong> Mon-Sat (5 PM - 9 PM)</p>
+                <p style="margin: 10px 0;"><strong>Location:</strong> Hyderabad, Pakistan</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>⚙️ Account Settings</h3>
+                <button onclick="editProfile()" class="btn" style="background: #007bff; margin: 10px 5px;">Edit Profile</button>
+                <button onclick="changePassword()" class="btn" style="background: #28a745; margin: 10px 5px;">Change Password</button>
+                <button onclick="viewMatches()" class="btn" style="background: #6f42c1; margin: 10px 5px;">My Matches</button>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 40px 0;">
+            <h3>Need Help?</h3>
+            <p>Contact us on WhatsApp: <a href="https://wa.me/923173916773" style="color: #FFD700; text-decoration: none;">+92 317 3916773</a></p>
+            <p>Or visit our main website for more information</p>
+            <a href="index.html" class="btn" style="font-size: 18px; padding: 15px 30px;">🌐 Visit Main Website</a>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        function checkLogin() {
+            const userEmail = localStorage.getItem('userEmail');
+            const userName = localStorage.getItem('userName');
+            
+            if (!userEmail || !userName) {
+                // Not logged in, redirect to main site
+                alert('⚠️ Please login first!');
+                window.location.href = 'index.html';
+                return false;
+            }
+            return true;
+        }
+        
+        // Load user info
+        function loadUserInfo() {
+            if (!checkLogin()) return;
+            
+            const userName = localStorage.getItem('userName') || 'Champion';
+            const userEmail = localStorage.getItem('userEmail') || 'member@example.com';
+            
+            document.getElementById('welcome-message').textContent = `Welcome, ${userName}!`;
+            document.getElementById('user-info').innerHTML = `
+                <strong>Email:</strong> ${userEmail}<br>
+                <strong>Member Since:</strong> ${new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })}
+            `;
+            
+            // Add some random stats (for demo)
+            document.getElementById('total-matches').textContent = Math.floor(Math.random() * 10);
+            document.getElementById('upcoming-events').textContent = Math.floor(Math.random() * 5) + 1;
+        }
+        
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userName');
+                alert('✅ Logged out successfully!');
+                window.location.href = 'index.html';
+            }
+        }
+        
+        // Other functions
+        function editProfile() {
+            const newName = prompt('Enter your full name:', localStorage.getItem('userName') || '');
+            if (newName && newName.trim() !== '') {
+                localStorage.setItem('userName', newName);
+                loadUserInfo();
+                alert('✅ Profile updated successfully!');
+            }
+        }
+        
+        function changePassword() {
+            alert('Password change feature coming soon!');
+        }
+        
+        function viewMatches() {
+            alert('Match history feature coming soon!');
+        }
+        
+        // Auto-redirect if not logged in
+        window.addEventListener('load', function() {
+            const userEmail = localStorage.getItem('userEmail');
+            if (!userEmail) {
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            } else {
+                loadUserInfo();
+            }
+        });
+        
+        // Check every 5 seconds if still logged in
+        setInterval(() => {
+            const userEmail = localStorage.getItem('userEmail');
+            if (!userEmail) {
+                window.location.href = 'index.html';
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
